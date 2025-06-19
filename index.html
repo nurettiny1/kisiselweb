@@ -28,9 +28,9 @@
     <h2 class="fade-in"><i class="fas fa-user"></i> Hakkımda</h2>
     <div class="about-box fade-in">
       <p>
-        25 yaşındayım ve yazılım konusunda kendimi geliştirmeye çalışıyorum. <br>
-        Öğrendiklerimi pratiğe dökerek ilerlemeyi seviyorum. <br>
-        Bu sayfa, hem kendimi tanıtmak hem de denemeler yapmak için oluşturduğum kişisel bir projedir.
+        Bilgi İşlem Uzman Yardımcısı olarak başladığım kariyerimde, sistem ve ağ yönetimi ile yazılım geliştirme alanlarında kendimi geliştiriyorum.<br>
+        Günlük işlerimde teknik destek sağlarken, aynı zamanda bir web projesinde tester olarak görev alıyor ve yazılım test süreçlerinde tecrübe ediniyorum.<br>
+        Hedefim, teknik altyapımı güçlendirerek hem Türkiye'de hem yurt dışında bu alanda fark yaratmak.
       </p>
     </div>
 
@@ -58,27 +58,10 @@
       <li><i class="fas fa-brain"></i> Yazılım öğrenmek</li>
       <li><i class="fas fa-plane"></i> Seyahat</li>
     </ul>
-
-    <!-- Sertifikalar -->
-<h2 class="fade-in"><i class="fas fa-certificate"></i> Sertifikalarım</h2>
-<div class="accordion-container fade-in">
-  <button class="accordion">HTML ve CSS Eğitimi</button>
-  <div class="panel">
-    <p>Udemy üzerinden tamamladığım 40 saatlik HTML & CSS eğitimi.</p>
-  </div>
-
-  <button class="accordion">JavaScript Temelleri</button>
-  <div class="panel">
-    <p>JavaScript'in temel yapı taşlarını öğrendiğim kısa eğitim.</p>
-  </div>
-
-  <button class="accordion">Responsive Tasarım</button>
-  <div class="panel">
-    <p>Mobil uyumlu tasarımlar oluşturma konusunda aldığım temel kurs.</p>
-  </div>
-</div>
-
+    
     <button class="feedback-toggle" onclick="toggleFeedbackForm()">💬 Bana Not Bırak</button>
+    <p id="feedbackMsg" style="display:none; color: green; margin-top: 10px;">Teşekkürler! Mesajınız başarıyla alındı.</p>
+
     <div class="feedback-form" id="feedbackForm">
       <h3>Geri Bildirim</h3>
       <input type="text" placeholder="Adınız" required>
@@ -87,46 +70,36 @@
       <button class="submit-btn">Gönder</button>
     </div>
 
-    <div class="accordion-container">
-  <button class="accordion">Hedeflerim</button>
-  <div class="panel">
-    <p>Yazılım alanında uzmanlaşmak ve bir yazılım geliştirici olarak kariyer yapmak istiyorum.</p>
-  </div>
-
-  <button class="accordion">Deneyimlerim</button>
-  <div class="panel">
-    <p>Kendi kişisel sitemi yaptım, HTML ve CSS üzerinde çalışıyorum. Sanal makineler kuruyorum.</p>
-  </div>
-
-  <button class="accordion">Gelecek Planlarım</button>
-  <div class="panel">
-    <p>İleride karavanla gezmek, YouTube içerikleri üretmek ve özgür bir yaşam tarzı kurmak istiyorum.</p>
-  </div>
-</div>
-
     <footer style="margin-top: 50px; padding: 10px; font-size: 14px; color: gray;">
       © 2025 Nurettin Yavuz | Tüm hakları saklıdır.
     </footer>
 
-    <script>
-      function toggleFeedbackForm() {
-        var form = document.getElementById("feedbackForm");
-        form.style.display = (form.style.display === "block") ? "none" : "block";
-      }
+   <script>
+  function toggleFeedbackForm() {
+    const form = document.getElementById("feedbackForm");
+    form.style.display = (form.style.display === "block") ? "none" : "block";
+  }
 
-      const accordions = document.querySelectorAll(".accordion");
-accordions.forEach(btn => {
-  btn.addEventListener("click", function () {
-    this.classList.toggle("active");
-    const panel = this.nextElementSibling;
-    if (panel.style.maxHeight) {
-      panel.style.maxHeight = null;
-    } else {
-      panel.style.maxHeight = panel.scrollHeight + "px";
-    }
+  const feedbackFormWrapper = document.getElementById("feedbackForm");2
+  const submitBtn = feedbackFormWrapper.querySelector(".submit-btn");
+
+  // Yeni mesaj kutusu oluştur
+  const feedbackMsg = document.createElement("p");
+  feedbackMsg.id = "feedbackMsg";
+  feedbackMsg.textContent = "Teşekkürler! Mesajınız başarıyla alındı.";
+  feedbackMsg.style.display = "none";
+  feedbackMsg.style.color = "green";
+  feedbackMsg.style.marginTop = "10px";
+  feedbackFormWrapper.appendChild(feedbackMsg);
+
+  submitBtn.addEventListener("click", function (e) {
+    e.preventDefault();
+    feedbackMsg.style.display = "block";
+    setTimeout(() => {
+      feedbackMsg.style.display = "none";
+    }, 5000);
   });
-});
- 
-    </script>
+</script>
+
   </body>
 </html>
