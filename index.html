@@ -3,588 +3,483 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nurettin Yavuz</title>
+    <title>Nurettin Yavuz - IT Uzmanı</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <!-- Loading Screen Styles -->
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: #f8f9fa;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Header & Navigation */
-        header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 1rem 0;
+        .loading-screen {
             position: fixed;
-            width: 100%;
             top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.8rem;
-            font-weight: bold;
-            text-decoration: none;
-            color: white;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            transition: opacity 0.3s;
-        }
-
-        .nav-links a:hover {
-            opacity: 0.8;
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.9), rgba(118, 75, 162, 0.9)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="%23ffffff10" points="0,1000 1000,1000 1000,200 200,0 0,200"/><polygon fill="%23ffffff05" points="800,1000 1000,800 1000,1000"/></svg>');
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            text-align: center;
-            color: white;
-            background-size: cover;
-            background-attachment: fixed;
-        }
-
-        .hero-content h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            animation: fadeInUp 1s ease;
-        }
-
-        .hero-content .subtitle {
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-            animation: fadeInUp 1s ease 0.2s both;
-        }
-
-        .hero-content .description {
-            font-size: 1.1rem;
-            max-width: 600px;
-            margin: 0 auto 2rem;
-            opacity: 0.8;
-            animation: fadeInUp 1s ease 0.4s both;
-        }
-
-        .cta-buttons {
-            animation: fadeInUp 1s ease 0.6s both;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 12px 30px;
-            margin: 0 10px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
-        }
-
-        .btn-primary {
-            background: white;
-            color: #667eea;
-        }
-
-        .btn-secondary {
-            border: 2px solid white;
-            color: white;
-        }
-
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-        }
-
-        /* Sections */
-        section {
-            padding: 80px 0;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            color: #2c3e50;
-            position: relative;
-        }
-
-        .section-title::after {
-            content: '';
-            width: 50px;
-            height: 3px;
-            background: linear-gradient(to right, #667eea, #764ba2);
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        /* About Section */
-        .about {
-            background: white;
-        }
-
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .profile-img {
-            width: 300px;
-            height: 300px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 4rem;
-            color: white;
-            margin: 0 auto;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-            overflow: hidden;
-            position: relative;
-        }
-
-        .profile-img img {
+            left: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover;
-            border-radius: 50%;
-        }
-
-        .profile-img.no-image {
-            background: linear-gradient(135deg, #667eea, #764ba2);
+            background: linear-gradient(135deg, #1e40af, #3b82f6, #06b6d4);
             display: flex;
-            align-items: center;
+            flex-direction: column;
             justify-content: center;
-            font-size: 4rem;
-            color: white;
-        }
-
-        .about-text h3 {
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-            color: #2c3e50;
-        }
-
-        .about-text p {
-            font-size: 1.1rem;
-            margin-bottom: 1.5rem;
-            color: #666;
-        }
-
-        /* Skills Section */
-        .skills {
-            background: #f8f9fa;
-        }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .skill-category {
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-        }
-
-        .skill-category:hover {
-            transform: translateY(-5px);
-        }
-
-        .skill-category h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: #2c3e50;
-        }
-
-        .skill-item {
-            margin-bottom: 1rem;
-        }
-
-        .skill-name {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 0.5rem;
-        }
-
-        .skill-bar {
-            height: 8px;
-            background: #e9ecef;
-            border-radius: 4px;
-            overflow: hidden;
-        }
-
-        .skill-progress {
-            height: 100%;
-            background: linear-gradient(to right, #667eea, #764ba2);
-            border-radius: 4px;
-            transition: width 1s ease;
-        }
-
-        /* Experience Section */
-        .experience {
-            background: white;
-        }
-
-        .timeline {
-            position: relative;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            width: 2px;
-            background: linear-gradient(to bottom, #667eea, #764ba2);
-            top: 0;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        .timeline-item {
-            position: relative;
-            margin-bottom: 2rem;
-            padding: 0 2rem;
-        }
-
-        .timeline-content {
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            position: relative;
-        }
-
-        .timeline-date {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            position: absolute;
-            top: -15px;
-            z-index: 999;
-            right: 2rem;
-        }
-
-        /* Contact Section */
-        .contact {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-        }
-
-        .contact-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-        }
-
-        .contact-info h3 {
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-        }
-
-        .contact-item {
-            display: flex;
             align-items: center;
-            margin-bottom: 1rem;
-            font-size: 1.1rem;
+            z-index: 9999;
+            transition: opacity 0.5s ease-out;
         }
-
-        .contact-form {
-            background: rgba(255,255,255,0.1);
-            padding: 2rem;
-            border-radius: 10px;
-            backdrop-filter: blur(10px);
+        
+        .loading-screen.hidden {
+            opacity: 0;
+            pointer-events: none;
         }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 1rem;
-            border: none;
-            border-radius: 5px;
-            background: rgba(255,255,255,0.9);
-            font-size: 1rem;
-        }
-
-        .form-group textarea {
-            height: 120px;
-            resize: vertical;
-        }
-
-        /* Footer */
-        footer {
-            background: #2c3e50;
-            color: white;
-            text-align: center;
-            padding: 2rem 0;
-        }
-
-        .social-links {
-            margin: 1rem 0;
-        }
-
-        .social-links a {
-            display: inline-block;
+        
+        .loader {
             width: 50px;
             height: 50px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
+            border: 3px solid rgba(255,255,255,0.3);
+            border-top: 3px solid white;
             border-radius: 50%;
-            text-decoration: none;
-            line-height: 50px;
-            margin: 0 10px;
-            transition: transform 0.3s ease;
+            animation: spin 1s linear infinite;
+            margin-bottom: 20px;
         }
-
-        .social-links a:hover {
-            transform: translateY(-3px);
+        
+        .loading-text {
+            color: white;
+            font-size: 18px;
+            font-weight: 600;
+            animation: pulse 2s infinite;
         }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        
+        /* Scroll Progress Bar */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background: linear-gradient(90deg, #1e40af, #3b82f6, #06b6d4);
+            z-index: 9998;
+            transition: width 0.1s ease-out;
         }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            
-            .hero-content h1 {
-                font-size: 2.5rem;
-            }
-            
-            .about-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-            
-            .contact-content {
-                grid-template-columns: 1fr;
-            }
-            
-            .timeline::before {
-                left: 20px;
-            }
-            
-            .timeline-item {
-                padding-left: 4rem;
-            }
+        
+        /* Dark Mode Styles */
+        .dark-mode {
+            background-color: #0f0f0f !important;
+            color: #e5e5e5 !important;
+        }
+        
+        .dark-mode .bg-white {
+            background-color: #1a1a1a !important;
+        }
+        
+        .dark-mode .bg-gray-50 {
+            background-color: #0f0f0f !important;
+        }
+        
+        .dark-mode .bg-gray-100 {
+            background-color: #1a1a1a !important;
+        }
+        
+        .dark-mode .text-gray-800 {
+            color: #e5e5e5 !important;
+        }
+        
+        .dark-mode .text-gray-600 {
+            color: #a0a0a0 !important;
+        }
+        
+        .dark-mode .text-gray-700 {
+            color: #d1d5db !important;
+        }
+        
+        .dark-mode .text-gray-400 {
+            color: #9ca3af !important;
+        }
+        
+        .dark-mode .text-gray-500 {
+            color: #6b7280 !important;
+        }
+        
+        .dark-mode .border-gray-300 {
+            border-color: #374151 !important;
+        }
+        
+        .dark-mode .shadow-lg {
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5) !important;
+        }
+        
+        .dark-mode .shadow-md {
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3) !important;
+        }
+        
+        .dark-mode nav {
+            background-color: #1a1a1a !important;
+            border-bottom: 1px solid #374151 !important;
+        }
+        
+        .dark-mode .bg-gradient-to-br {
+            background: linear-gradient(to bottom right, #1e3a8a, #1e40af) !important;
+        }
+        
+        .dark-mode .bg-gradient-to-br.from-primary {
+            background: linear-gradient(to bottom right, #1e3a8a, #1e40af) !important;
+        }
+        
+        .dark-mode .bg-gradient-to-br.from-green-500 {
+            background: linear-gradient(to bottom right, #059669, #10b981) !important;
+        }
+        
+        .dark-mode .bg-gradient-to-br.from-purple-500 {
+            background: linear-gradient(to bottom right, #7c3aed, #a855f7) !important;
+        }
+        
+        .dark-mode .bg-gradient-to-br.from-red-500 {
+            background: linear-gradient(to bottom right, #dc2626, #ef4444) !important;
+        }
+        
+        .dark-mode .bg-gradient-to-br.from-indigo-500 {
+            background: linear-gradient(to bottom right, #4338ca, #6366f1) !important;
+        }
+        
+        .dark-mode .bg-gradient-to-br.from-teal-500 {
+            background: linear-gradient(to bottom right, #0d9488, #14b8a6) !important;
+        }
+        
+        .dark-mode .bg-gray-800 {
+            background-color: #111827 !important;
+        }
+        
+        .dark-mode .text-blue-100 {
+            color: #dbeafe !important;
+        }
+        
+        .dark-mode .text-blue-200 {
+            color: #bfdbfe !important;
+        }
+        
+        .dark-mode .text-blue-600 {
+            color: #3b82f6 !important;
+        }
+        
+        .dark-mode .text-blue-800 {
+            color: #1e40af !important;
+        }
+        
+        .dark-mode .text-green-800 {
+            color: #166534 !important;
+        }
+        
+        .dark-mode .text-red-800 {
+            color: #991b1b !important;
+        }
+        
+        .dark-mode .text-purple-800 {
+            color: #6b21a8 !important;
+        }
+        
+        .dark-mode .text-orange-800 {
+            color: #9a3412 !important;
+        }
+        
+        .dark-mode .text-cyan-800 {
+            color: #155e75 !important;
+        }
+        
+        .dark-mode .text-indigo-800 {
+            color: #3730a3 !important;
+        }
+        
+        .dark-mode .text-teal-800 {
+            color: #115e59 !important;
+        }
+        
+        .dark-mode .bg-blue-100 {
+            background-color: #1e3a8a !important;
+        }
+        
+        .dark-mode .bg-green-100 {
+            background-color: #064e3b !important;
+        }
+        
+        .dark-mode .bg-red-100 {
+            background-color: #7f1d1d !important;
+        }
+        
+        .dark-mode .bg-purple-100 {
+            background-color: #581c87 !important;
+        }
+        
+        .dark-mode .bg-orange-100 {
+            background-color: #7c2d12 !important;
+        }
+        
+        .dark-mode .bg-cyan-100 {
+            background-color: #164e63 !important;
+        }
+        
+        .dark-mode .bg-indigo-100 {
+            background-color: #312e81 !important;
+        }
+        
+        .dark-mode .bg-teal-100 {
+            background-color: #134e4a !important;
+        }
+        
+        .dark-mode .bg-yellow-100 {
+            background-color: #713f12 !important;
+        }
+        
+        .dark-mode .bg-pink-100 {
+            background-color: #831843 !important;
+        }
+        
+        .dark-mode .bg-gray-100 {
+            background-color: #1a1a1a !important;
+        }
+        
+        /* Dark Mode Badge Colors - Daha okunabilir */
+        .dark-mode .bg-blue-100 {
+            background-color: #1e3a8a !important;
+            color: #dbeafe !important;
+        }
+        
+        .dark-mode .bg-green-100 {
+            background-color: #064e3b !important;
+            color: #bbf7d0 !important;
+        }
+        
+        .dark-mode .bg-red-100 {
+            background-color: #7f1d1d !important;
+            color: #fecaca !important;
+        }
+        
+        .dark-mode .bg-purple-100 {
+            background-color: #581c87 !important;
+            color: #e9d5ff !important;
+        }
+        
+        .dark-mode .bg-orange-100 {
+            background-color: #7c2d12 !important;
+            color: #fed7aa !important;
+        }
+        
+        .dark-mode .bg-yellow-100 {
+            background-color: #713f12 !important;
+            color: #fef3c7 !important;
+        }
+        
+        .dark-mode .bg-cyan-100 {
+            background-color: #164e63 !important;
+            color: #a7f3d0 !important;
+        }
+        
+        .dark-mode .bg-indigo-100 {
+            background-color: #312e81 !important;
+            color: #c7d2fe !important;
+        }
+        
+        .dark-mode .bg-teal-100 {
+            background-color: #134e4a !important;
+            color: #99f6e4 !important;
+        }
+        
+        .dark-mode .bg-pink-100 {
+            background-color: #831843 !important;
+            color: #fce7f3 !important;
         }
     </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1e40af',
+                        secondary: '#3b82f6',
+                        accent: '#06b6d4'
+                    }
+                }
+            }
+        }
+    </script>
 </head>
-<body>
-    <header>
-        <nav class="container">
-            <a href="#" class="logo"></a>
-            <ul class="nav-links">
-                <li><a href="#home">Ana Sayfa</a></li>
-                <li><a href="#about">Hakkımda</a></li>
-                <li><a href="#skills">Yetenekler</a></li>
-                <li><a href="#experience">Deneyim</a></li>
-                <li><a href="#contact">İletişim</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <section id="home" class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h1>Nurettin Yavuz</h1>
-                <p class="subtitle">IT Destek Uzmanı</p>
-                <p class="description">
-                    IT altyapı çözümleri, sistem yönetimi ve ağ teknolojileri konularında 
-                    deneyimli bir uzman olarak işletmenizin teknoloji ihtiyaçlarına çözüm üretiyorum.
-                </p>
-                <div class="cta-buttons">
-                    <a href="#about" class="btn btn-primary">Hakkımda</a>
-                    <a href="#contact" class="btn btn-secondary">İletişime Geç</a>
+<body class="bg-gray-50 text-gray-800">
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" id="scroll-progress"></div>
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg fixed w-full top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <!-- Logo kaldırıldı -->
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="nav-link text-gray-700 hover:text-primary transition duration-300">Ana Sayfa</a>
+                    <a href="#about" class="nav-link text-gray-700 hover:text-primary transition duration-300">Hakkımda</a>
+                    <a href="#portfolio" class="nav-link text-gray-700 hover:text-primary transition duration-300">Portföy</a>
+                    <a href="#education" class="nav-link text-gray-700 hover:text-primary transition duration-300">Eğitimler</a>
+                    <a href="#contact" class="nav-link text-gray-700 hover:text-primary transition duration-300">İletişim</a>
+                    <button id="dark-mode-toggle" class="text-gray-700 hover:text-primary transition duration-300 ml-4">
+                        <i class="fas fa-moon text-xl"></i>
+                    </button>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gray-700 hover:text-primary">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
                 </div>
             </div>
         </div>
-    </section>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden hidden bg-white border-t">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="#home" class="block px-3 py-2 text-gray-700 hover:text-primary">Ana Sayfa</a>
+                <a href="#about" class="block px-3 py-2 text-gray-700 hover:text-primary">Hakkımda</a>
+                <a href="#portfolio" class="block px-3 py-2 text-gray-700 hover:text-primary">Portföy</a>
+                <a href="#education" class="block px-3 py-2 text-gray-700 hover:text-primary">Eğitimler</a>
+                <a href="#contact" class="block px-3 py-2 text-gray-700 hover:text-primary">İletişim</a>
+                <button id="dark-mode-toggle-mobile" class="block w-full text-left px-3 py-2 text-gray-700 hover:text-primary">
+                    <i class="fas fa-moon mr-2"></i>Karanlık Mod
+                </button>
+            </div>
+        </div>
+    </nav>
 
-    <section id="about" class="about">
-        <div class="container">
-            <h2 class="section-title">Hakkımda</h2>
-            <div class="about-content">
-                <div class="profile-img no-image" id="profileImage">
-                   <img src="1234.jpg" alt="Nurettin Yavuz">
-                    <!-- Fotoğrafınızı eklemek için aşağıdaki satırı kullanın: -->
-                    <!-- <img src="profil-fotografi.jpg" alt="Nurettin Yavuz"> -->
-                </div>
-                <div class="about-text">
-                    <h3>Merhaba, Ben Nurettin</h3>
-                    <p>
-                        IT sektöründeki serüvenim 2023 yılında 3. Nesil Yazılım ve Bilişim firmasında 
-                        bilgisayar teknisyeni olarak başladı. 2 yıl boyunca donanım onarımları, sistem 
-                        kurulumları ve teknik destek konularında deneyim kazandım.
+    <!-- Hero Section -->
+    <section id="home" class="pt-16 bg-gradient-to-br from-primary to-secondary min-h-screen flex items-center relative overflow-hidden">
+        <!-- Data Flow Background -->
+        <div class="absolute inset-0 overflow-hidden">
+            <div class="data-flow-container">
+                <div class="data-line line-1"></div>
+                <div class="data-line line-2"></div>
+                <div class="data-line line-3"></div>
+                <div class="data-line line-4"></div>
+                <div class="data-line line-5"></div>
+                <div class="data-line line-6"></div>
+                
+                <!-- Data nodes -->
+                <div class="data-node node-1"></div>
+                <div class="data-node node-2"></div>
+                <div class="data-node node-3"></div>
+                <div class="data-node node-4"></div>
+                <div class="data-node node-5"></div>
+                <div class="data-node node-6"></div>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="text-white">
+                    <h1 class="text-4xl md:text-6xl font-bold mb-6">
+                        Merhaba, Ben <span class="text-accent">Nurettin Yavuz</span>
+                    </h1>
+                    <p class="text-xl md:text-2xl mb-8 text-blue-100">
+                        IT Destek Uzmanı / Sistem & Network Uzmanı
                     </p>
-                    <p>
-                        Şu anda Etrofil Hand Knitting Yarns firmasında IT Destek Uzmanı olarak 
-                        çalışıyorum. Bu süre zarfında Active Directory kullanıcı yönetimi, 
-                        domain kurulumları, mail sistem konfigürasyonları ve ağ sorunlarının çözümü 
-                        konularında kendimi geliştirdim. Her gün yeni bir şeyler öğrenmeye devam ediyorum.
+                    <p class="text-lg mb-8 text-blue-200">
+                        2+ yıllık bilişim deneyimi ve aktif IT destek uzmanlığı ile sistem yönetimi, network altyapısı ve Active Directory konularında uzmanlaşmış bir IT personeliyim.
                     </p>
-                    <p>
-                        Teknoloji tutkum ve sürekli öğrenme isteğimle, sistem ve ağ yönetimi 
-                        alanında uzmanlaşmaya odaklanmış durumdayım.
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="#about" class="btn-primary bg-accent hover:bg-cyan-600 text-white px-8 py-3 rounded-lg font-semibold text-center">
+                            Hakkımda
+                        </a>
+                        <a href="#contact" class="btn-secondary border-2 border-white text-white hover:bg-white hover:text-primary px-8 py-3 rounded-lg font-semibold text-center">
+                            İletişime Geç
+                        </a>
+                    </div>
+                </div>
+                <div class="flex justify-center">
+                    <div class="relative">
+                        <div class="w-[28rem] h-[28rem] bg-white bg-opacity-20 rounded-2xl flex items-center justify-center overflow-hidden shadow-2xl">
+                            <img src="IMG_1493.jpg" alt="Nurettin Yavuz" class="w-full h-full object-cover rounded-2xl">
+                        </div>
+                        <!-- Sağ alt - Dönen Server -->
+                        <div class="absolute -bottom-4 -right-4 w-20 h-20 bg-blue-500 rounded-full flex items-center justify-center floating">
+                            <i class="fas fa-server text-2xl text-white rotating-server"></i>
+                        </div>
+                        
+                        <!-- Sağ üst - WiFi (Fotoğrafın üstünde) -->
+                        <div class="absolute top-2 right-2 w-12 h-12 bg-green-500 rounded-full flex items-center justify-center status-indicator">
+                            <div class="relative">
+                                <i class="fas fa-wifi text-lg text-white"></i>
+                                <div class="absolute -top-0.5 -right-0.5 w-1.5 h-1.5 bg-green-400 rounded-full status-dot"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">Hakkımda</h2>
+                <p class="text-xl text-gray-600">Deneyimlerim ve Uzmanlık Alanlarım</p>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-6">Kimim?</h3>
+                    <p class="text-lg text-gray-600 mb-6">
+                        Etrofil Hand Knitting Yarns'da IT Destek Uzmanı olarak çalışan, sistem ve network altyapısı konularında uzmanlaşmış bir IT profesyoneliyim. 
+                        2+ yıllık bilişim deneyimi (3. Nesil Yazılım ve Bilişim'de Bilgisayar Teknisyeni olarak) ve aktif IT destek uzmanlığı ile Windows Server, Active Directory ve network yönetimi konularında derinlemesine bilgi sahibiyim.
                     </p>
-                    <a href="#contact" class="btn btn-primary">Benimle Çalış</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="skills" class="skills">
-        <div class="container">
-            <h2 class="section-title">Yeteneklerim</h2>
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <h3>Sistem Yönetimi</h3>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>Active Directory</span>
-                            <span>90%</span>
+                    <p class="text-lg text-gray-600 mb-8">
+                        Kendi kurduğum laboratuvarlarda sürekli pratik yaparak kendimi geliştiriyorum. 
+                        Hedefim sağlam bir sistem & network uzmanı olmak ve bu alanda en iyi olmak için sürekli öğrenmeye devam ediyorum.
+                    </p>
+                    <div class="grid grid-cols-2 gap-6">
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-primary mb-2">2+</div>
+                            <div class="text-gray-600">Yıl Bilişim Deneyimi</div>
                         </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 90%"></div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-primary mb-2">2</div>
+                            <div class="text-gray-600">Yıl Bilgisayar Teknisyeni</div>
                         </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>Domain Kurulumu</span>
-                            <span>85%</span>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-primary mb-2">4</div>
+                            <div class="text-gray-600">Udemy Sertifikası</div>
                         </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 85%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>Windows Server</span>
-                            <span>88%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 88%"></div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-primary mb-2">∞</div>
+                            <div class="text-gray-600">Öğrenme Azmi</div>
                         </div>
                     </div>
                 </div>
-                
-                <div class="skill-category">
-                    <h3>Ağ Teknolojileri</h3>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>Ağ Kurulumu</span>
-                            <span>87%</span>
+                <div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-6">Teknoloji Yığınım</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-gray-700 font-semibold">Windows Server Yönetimi</span>
+                                <span class="text-primary font-semibold">90%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2 skill-bar">
+                                <div class="bg-primary h-2 rounded-full" style="width: 90%"></div>
+                            </div>
                         </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 87%"></div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-gray-700 font-semibold">Active Directory & GPO</span>
+                                <span class="text-primary font-semibold">85%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2 skill-bar">
+                                <div class="bg-primary h-2 rounded-full" style="width: 85%"></div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>Mail Server Kurulumu</span>
-                            <span>80%</span>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-gray-700 font-semibold">Network Yönetimi</span>
+                                <span class="text-primary font-semibold">80%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2 skill-bar">
+                                <div class="bg-primary h-2 rounded-full" style="width: 80%"></div>
+                            </div>
                         </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 80%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>Ağ Sorun Giderme</span>
-                            <span>92%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 92%"></div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="skill-category">
-                    <h3>Teknik Destek</h3>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>Donanım Onarımı</span>
-                            <span>90%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 90%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>Windows Sorun Giderme</span>
-                            <span>95%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 95%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>Kullanıcı Yönetimi</span>
-                            <span>88%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 88%"></div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-gray-700 font-semibold">IT Destek & Helpdesk</span>
+                                <span class="text-primary font-semibold">95%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2 skill-bar">
+                                <div class="bg-primary h-2 rounded-full" style="width: 95%"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -592,160 +487,424 @@
         </div>
     </section>
 
-    <section id="experience" class="experience">
-        <div class="container">
-            <h2 class="section-title">Deneyimlerim</h2>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-date">2025/03 - Günümüz</div>
-                    <div class="timeline-content">
-                        <h3>IT Destek Uzmanı</h3>
-                        <h4>Etrofil Hand Knitting Yarns</h4>
-                        <p>
-                            Kullanıcı destek hizmetleri, sistem bakımı ve ağ yönetimi görevlerini yürütüyorum. 
-                            Active Directory kullanıcı yönetimi, mail sistem kurulumu ve donanım/yazılım sorunlarının 
-                            çözümünde aktif rol alıyorum.
-                        </p>
+    <!-- Skills Section -->
+    <section class="py-20 bg-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">Teknoloji Yeteneklerim</h2>
+                <p class="text-xl text-gray-600">Uzmanlaştığım Sistem ve Network Teknolojileri</p>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8">
+                <div class="text-center group">
+                    <div class="tech-card bg-white p-6 rounded-lg shadow-md">
+                        <i class="fab fa-windows text-4xl text-blue-500 mb-3"></i>
+                        <h3 class="font-semibold text-gray-800">Windows Server</h3>
                     </div>
                 </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-date">2023 - 2025</div>
-                    <div class="timeline-content">
-                        <h3>Bilgisayar Teknisyeni</h3>
-                        <h4>3. Nesil Yazılım ve Bilişim</h4>
-                        <p>
-                            2 yıl boyunca bilgisayar donanım onarımı, sistem kurulumları, 
-                            ağ altyapı çalışmaları ve teknik destek hizmetleri sundum. 
-                            Windows işletim sistemleri, donanım arızaları ve ağ problemleri 
-                            konularında kapsamlı deneyim kazandım.
-                        </p>
+                <div class="text-center group">
+                    <div class="tech-card bg-white p-6 rounded-lg shadow-md">
+                        <i class="fas fa-users-cog text-4xl text-green-500 mb-3"></i>
+                        <h3 class="font-semibold text-gray-800">Active Directory</h3>
                     </div>
                 </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-date">2021/07 - 2021/11</div>
-                    <div class="timeline-content">
-                        <h3>Otel Sektöründe Çalışma</h3>
-                        <h4>Crystal Hotels</h4>
-                        <p>
-                            IT sektörüne geçmeden önce otel sektöründe çalışarak müşteri 
-                            hizmetleri, problem çözme ve iletişim becerilerimi geliştirdim. 
-                            Bu deneyim, teknik destek alanında müşteri odaklı yaklaşım 
-                            sergilememe katkı sağladı.
-                        </p>
+                <div class="text-center group">
+                    <div class="tech-card bg-white p-6 rounded-lg shadow-md">
+                        <i class="fas fa-network-wired text-4xl text-purple-500 mb-3"></i>
+                        <h3 class="font-semibold text-gray-800">Network</h3>
+                    </div>
+                </div>
+                <div class="text-center group">
+                    <div class="tech-card bg-white p-6 rounded-lg shadow-md">
+                        <i class="fas fa-shield-alt text-4xl text-red-500 mb-3"></i>
+                        <h3 class="font-semibold text-gray-800">Group Policy</h3>
+                    </div>
+                </div>
+                <div class="text-center group">
+                    <div class="tech-card bg-white p-6 rounded-lg shadow-md">
+                        <i class="fas fa-server text-4xl text-orange-500 mb-3"></i>
+                        <h3 class="font-semibold text-gray-800">DHCP</h3>
+                    </div>
+                </div>
+                <div class="text-center group">
+                    <div class="tech-card bg-white p-6 rounded-lg shadow-md">
+                        <i class="fas fa-globe text-4xl text-cyan-500 mb-3"></i>
+                        <h3 class="font-semibold text-gray-800">DNS</h3>
+                    </div>
+                </div>
+                <div class="text-center group">
+                    <div class="tech-card bg-white p-6 rounded-lg shadow-md">
+                        <i class="fas fa-desktop text-4xl text-indigo-500 mb-3"></i>
+                        <h3 class="font-semibold text-gray-800">IT Support</h3>
+                    </div>
+                </div>
+                <div class="text-center group">
+                    <div class="tech-card bg-white p-6 rounded-lg shadow-md">
+                        <i class="fas fa-headset text-4xl text-teal-500 mb-3"></i>
+                        <h3 class="font-semibold text-gray-800">Helpdesk</h3>
+                    </div>
+                </div>
+                <div class="text-center group">
+                    <div class="tech-card bg-white p-6 rounded-lg shadow-md">
+                        <i class="fas fa-cube text-4xl text-blue-600 mb-3"></i>
+                        <h3 class="font-semibold text-gray-800">Hyper-V</h3>
+                    </div>
+                </div>
+                <div class="text-center group">
+                    <div class="tech-card bg-white p-6 rounded-lg shadow-md">
+                        <i class="fas fa-cloud text-4xl text-green-600 mb-3"></i>
+                        <h3 class="font-semibold text-gray-800">VMware</h3>
+                    </div>
+                </div>
+                <div class="text-center group">
+                    <div class="tech-card bg-white p-6 rounded-lg shadow-md">
+                        <i class="fas fa-tools text-4xl text-gray-600 mb-3"></i>
+                        <h3 class="font-semibold text-gray-800">System Admin</h3>
+                    </div>
+                </div>
+                <div class="text-center group">
+                    <div class="tech-card bg-white p-6 rounded-lg shadow-md">
+                        <i class="fas fa-laptop-code text-4xl text-pink-500 mb-3"></i>
+                        <h3 class="font-semibold text-gray-800">Lab Setup</h3>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2 class="section-title">İletişime Geçin</h2>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <h3>Benimle İletişime Geçin</h3>
-                    <p>Projeleriniz için benimle çalışmak istiyorsanız, aşağıdaki iletişim bilgilerinden bana ulaşabilirsiniz.</p>
-                    
-                    <div class="contact-item">
-                        <span>📧</span>
-                        <span>yavuznurettin081@gmail.com</span>
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">Portföyüm</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="portfolio-card portfolio-item bg-white rounded-lg shadow-lg overflow-hidden">
+                    <div class="h-48 bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
+                        <i class="fas fa-server text-6xl text-white"></i>
                     </div>
-                    <div class="contact-item">
-                        <span>📱</span>
-                        <span>+90 544 966 0381</span>
-                    </div>
-                    <div class="contact-item">
-                        <span>📍</span>
-                        <span>Bursa, Türkiye</span>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Windows Server Lab Kurulumu</h3>
+                        <p class="text-gray-600 mb-4">
+                            Kendi evimde kurduğum Windows Server 2019/2022 laboratuvarı. 
+                            Domain Controller, DHCP, DNS servisleri ve Active Directory yapılandırması.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Windows Server</span>
+                            <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">Active Directory</span>
+                            <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">DHCP/DNS</span>
+                        </div>
                     </div>
                 </div>
-                
-                <div class="contact-form">
-                    <h3>Mesaj Gönder</h3>
-                    <form>
-                        <div class="form-group">
-                            <input type="text" placeholder="Adınız" required>
+
+                <!-- Project 2 -->
+                <div class="portfolio-card portfolio-item bg-white rounded-lg shadow-lg overflow-hidden">
+                    <div class="h-48 bg-gradient-to-br from-green-500 to-teal-500 flex items-center justify-center">
+                        <i class="fas fa-users-cog text-6xl text-white"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Active Directory Yönetimi</h3>
+                        <p class="text-gray-600 mb-4">
+                            Etrofil şirketinde kullanıcı hesapları, grup politikaları ve güvenlik ayarları yönetimi. 
+                            Organizasyon birimleri ve delegasyon yapılandırması.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">AD DS</span>
+                            <span class="bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm">Group Policy</span>
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">OU Management</span>
                         </div>
-                        <div class="form-group">
-                            <input type="email" placeholder="E-mail Adresiniz" required>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="portfolio-card portfolio-item bg-white rounded-lg shadow-lg overflow-hidden">
+                    <div class="h-48 bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center">
+                        <i class="fas fa-network-wired text-6xl text-white"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Network Altyapı Tasarımı</h3>
+                        <p class="text-gray-600 mb-4">
+                            Şirket network altyapısının planlanması ve uygulanması. 
+                            VLAN yapılandırması, routing ve güvenlik duvarı ayarları.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">VLAN</span>
+                            <span class="bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm">Routing</span>
+                            <span class="bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm">Firewall</span>
                         </div>
-                        <div class="form-group">
-                            <input type="text" placeholder="Konu" required>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="portfolio-card portfolio-item bg-white rounded-lg shadow-lg overflow-hidden">
+                    <div class="h-48 bg-gradient-to-br from-red-500 to-orange-500 flex items-center justify-center">
+                        <i class="fas fa-cube text-6xl text-white"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Hyper-V Sanallaştırma</h3>
+                        <p class="text-gray-600 mb-4">
+                            Windows Server Hyper-V ile sanal makine altyapısı kurulumu. 
+                            VM yönetimi, snapshot ve backup stratejileri uygulaması.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Hyper-V</span>
+                            <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">VM Management</span>
+                            <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm">Backup</span>
                         </div>
-                        <div class="form-group">
-                            <textarea placeholder="Mesajınız" required></textarea>
+                    </div>
+                </div>
+
+                <!-- Project 5 -->
+                <div class="portfolio-card portfolio-item bg-white rounded-lg shadow-lg overflow-hidden">
+                    <div class="h-48 bg-gradient-to-br from-indigo-500 to-purple-500 flex items-center justify-center">
+                        <i class="fas fa-headset text-6xl text-white"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">IT Helpdesk Sistemi</h3>
+                        <p class="text-gray-600 mb-4">
+                            Etrofil şirketinde kullanıcı destek süreçlerinin yönetimi. 
+                            Ticket sistemi, uzaktan erişim ve problem çözüm süreçleri.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm">Helpdesk</span>
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Remote Support</span>
+                            <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">Ticket System</span>
                         </div>
-                        <button type="submit" class="btn btn-primary">Gönder</button>
+                    </div>
+                </div>
+
+                <!-- Project 6 -->
+                <div class="portfolio-card portfolio-item bg-white rounded-lg shadow-lg overflow-hidden">
+                    <div class="h-48 bg-gradient-to-br from-teal-500 to-cyan-500 flex items-center justify-center">
+                        <i class="fas fa-shield-alt text-6xl text-white"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Güvenlik Politikaları</h3>
+                        <p class="text-gray-600 mb-4">
+                            Şirket güvenlik politikalarının oluşturulması ve uygulanması. 
+                            Group Policy ile güvenlik ayarları ve kullanıcı kısıtlamaları.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm">Security Policy</span>
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Group Policy</span>
+                            <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">Compliance</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="py-20 bg-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">Eğitimler ve Sertifikalar</h2>
+                <p class="text-xl text-gray-600">Sürekli öğrenme yolculuğum</p>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <!-- Education -->
+                <div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-8">Kariyer Geçmişim</h3>
+                    <div class="space-y-6">
+                        <div class="bg-white p-6 rounded-lg shadow-md">
+                            <div class="flex items-start space-x-4">
+                                <div class="bg-primary text-white p-3 rounded-full">
+                                    <i class="fas fa-briefcase"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-semibold text-gray-800">IT Destek Uzmanı</h4>
+                                    <p class="text-gray-600">Etrofil Hand Knitting Yarns</p>
+                                    <p class="text-sm text-gray-500">Mart 2025 - Devam Ediyor</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-white p-6 rounded-lg shadow-md">
+                            <div class="flex items-start space-x-4">
+                                <div class="bg-secondary text-white p-3 rounded-full">
+                                    <i class="fas fa-tools"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-semibold text-gray-800">Bilgisayar Teknisyeni</h4>
+                                    <p class="text-gray-600">3. Nesil Yazılım ve Bilişim</p>
+                                    <p class="text-sm text-gray-500">Mart 2023 - Mart 2025</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Certifications -->
+                <div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-8">Sertifikalarım</h3>
+                    <div class="space-y-4">
+                        <div class="bg-white p-4 rounded-lg shadow-md flex items-center justify-between">
+                            <div class="flex items-center space-x-3">
+                                <i class="fab fa-windows text-2xl text-blue-500"></i>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800">Windows Server Ve Sistem Yöneticiliği</h4>
+                                    <p class="text-sm text-gray-600">Udemy</p>
+                                </div>
+                            </div>
+                            <a href="https://www.udemy.com/certificate/UC-c318e530-06b7-4753-923a-b105c3cb5346/" target="_blank" class="text-primary hover:text-secondary text-sm font-semibold">Sertifika</a>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow-md flex items-center justify-between">
+                            <div class="flex items-center space-x-3">
+                                <i class="fas fa-network-wired text-2xl text-purple-500"></i>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800">Sistem Ve Network Mühendisliği</h4>
+                                    <p class="text-sm text-gray-600">Udemy</p>
+                                </div>
+                            </div>
+                            <a href="https://www.udemy.com/certificate/UC-90bce477-d518-44ef-a99e-769a44a90d6a/" target="_blank" class="text-primary hover:text-secondary text-sm font-semibold">Sertifika</a>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow-md flex items-center justify-between">
+                            <div class="flex items-center space-x-3">
+                                <i class="fas fa-users-cog text-2xl text-green-500"></i>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800">Microsoft Active Directory & Group Policy</h4>
+                                    <p class="text-sm text-gray-600">Udemy</p>
+                                </div>
+                            </div>
+                            <a href="https://www.udemy.com/certificate/UC-058fdee3-b79b-4b05-906e-3f0766b67d52/" target="_blank" class="text-primary hover:text-secondary text-sm font-semibold">Sertifika</a>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow-md flex items-center justify-between">
+                            <div class="flex items-center space-x-3">
+                                <i class="fas fa-tools text-2xl text-orange-500"></i>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800">Uygulamalı IT Uzmanlığı Eğitimi</h4>
+                                    <p class="text-sm text-gray-600">Udemy</p>
+                                </div>
+                            </div>
+                            <a href="https://www.udemy.com/certificate/UC-88525e86-2fc9-4656-9100-14ce35b9f0ec/" target="_blank" class="text-primary hover:text-secondary text-sm font-semibold">Sertifika</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">İletişim</h2>
+                <p class="text-xl text-gray-600">Benimle iletişime geçin</p>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-6">İletişim Bilgilerim</h3>
+                    <div class="space-y-6">
+                        <div class="flex items-center space-x-4">
+                            <div class="bg-primary text-white p-3 rounded-full">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800">E-posta</h4>
+                                <p class="text-gray-600">nurettin.yavuz@email.com</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                            <div class="bg-primary text-white p-3 rounded-full">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800">Telefon</h4>
+                                <p class="text-gray-600">+90 555 123 45 67</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                            <div class="bg-primary text-white p-3 rounded-full">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800">Konum</h4>
+                                <p class="text-gray-600">İstanbul, Türkiye</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                            <div class="bg-primary text-white p-3 rounded-full">
+                                <i class="fab fa-linkedin"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800">LinkedIn</h4>
+                                <p class="text-gray-600">linkedin.com/in/nurettinyavuz</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-8">
+                        <h4 class="text-lg font-semibold text-gray-800 mb-4">Sosyal Medya</h4>
+                        <div class="flex space-x-4">
+                            <a href="#" class="bg-gray-800 text-white p-3 rounded-full hover:bg-gray-700 transition duration-300">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="#" class="bg-blue-600 text-white p-3 rounded-full hover:bg-blue-700 transition duration-300">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="bg-blue-800 text-white p-3 rounded-full hover:bg-blue-900 transition duration-300">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                            <a href="#" class="bg-pink-600 text-white p-3 rounded-full hover:bg-pink-700 transition duration-300">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-6">Mesaj Gönder</h3>
+                    <form class="space-y-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Ad Soyad</label>
+                            <input type="text" class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="Adınız ve soyadınız">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">E-posta</label>
+                            <input type="email" class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="email@example.com">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Konu</label>
+                            <input type="text" class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="Mesaj konusu">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Mesaj</label>
+                            <textarea rows="4" class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="Mesajınızı yazın"></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary w-full bg-primary text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700">
+                            Mesaj Gönder
+                        </button>
                     </form>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer>
-        <div class="container">
-            <div class="social-links">
-                <a href="https://www.linkedin.com/in/nurettin-yavuz-71822b187/" target="_blank">in</a>
-                <a href="#" target="_blank">@</a>
-                <a href="#" target="_blank">📱</a>
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h3 class="text-2xl font-bold mb-4">Nurettin Yavuz</h3>
+                <p class="text-gray-400 mb-6">IT Destek Uzmanı / Sistem & Network Uzmanı</p>
+                <div class="flex justify-center space-x-6 mb-6">
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                        <i class="fab fa-github text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                        <i class="fab fa-linkedin text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                        <i class="fab fa-twitter text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                        <i class="fab fa-instagram text-xl"></i>
+                    </a>
+                </div>
+                <p class="text-gray-500 text-sm">
+                    © 2024 Nurettin Yavuz. Tüm hakları saklıdır.
+                </p>
             </div>
-            <p>&copy; 2025 Nurettin Yavuz. Tüm hakları saklıdır.</p>
         </div>
     </footer>
 
-    <script>
-        // Smooth scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Header background on scroll
-        window.addEventListener('scroll', function() {
-            const header = document.querySelector('header');
-            if (window.scrollY > 100) {
-                header.style.background = 'rgba(102, 126, 234, 0.95)';
-                header.style.backdropFilter = 'blur(10px)';
-            } else {
-                header.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
-                header.style.backdropFilter = 'none';
-            }
-        });
-
-        // Skill bars animation
-        const observerOptions = {
-            threshold: 0.5
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const skillBars = entry.target.querySelectorAll('.skill-progress');
-                    skillBars.forEach(bar => {
-                        const width = bar.style.width;
-                        bar.style.width = '0%';
-                        setTimeout(() => {
-                            bar.style.width = width;
-                        }, 200);
-                    });
-                }
-            });
-        }, observerOptions);
-
-        const skillsSection = document.querySelector('.skills');
-        if (skillsSection) {
-            observer.observe(skillsSection);
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
