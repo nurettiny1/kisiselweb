@@ -68,47 +68,7 @@ window.addEventListener('scroll', function() {
     });
 });
 
-// Form submission
-document.addEventListener('DOMContentLoaded', function() {
-    const form = document.querySelector('form');
-    if (form) {
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Get form data
-            const name = this.querySelector('input[type="text"]').value;
-            const email = this.querySelector('input[type="email"]').value;
-            const subject = this.querySelectorAll('input[type="text"]')[1].value;
-            const message = this.querySelector('textarea').value;
-            
-            // Simple validation
-            if (!name || !email || !subject || !message) {
-                alert('Lütfen tüm alanları doldurun.');
-                return;
-            }
-            
-            // Email validation
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(email)) {
-                alert('Lütfen geçerli bir e-posta adresi girin.');
-                return;
-            }
-            
-            // Simulate form submission
-            const submitBtn = this.querySelector('button[type="submit"]');
-            const originalText = submitBtn.textContent;
-            submitBtn.textContent = 'Gönderiliyor...';
-            submitBtn.disabled = true;
-            
-            setTimeout(() => {
-                alert('Mesajınız başarıyla gönderildi! En kısa sürede size dönüş yapacağım.');
-                this.reset();
-                submitBtn.textContent = originalText;
-                submitBtn.disabled = false;
-            }, 2000);
-        });
-    }
-});
+// Form kaldırıldı - artık gerekli değil
 
 // Intersection Observer for animations
 const observerOptions = {
@@ -277,3 +237,77 @@ document.addEventListener('DOMContentLoaded', function() {
 window.addEventListener('load', function() {
     document.body.classList.add('loaded');
 });
+
+// E-posta kopyalama fonksiyonu
+function copyEmail() {
+    const email = 'yavuz_nurettin@icloud.com';
+    
+    // Modern tarayıcılar için Clipboard API
+    if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(email).then(function() {
+            showCopyNotification('E-posta adresi kopyalandı!');
+        }).catch(function() {
+            fallbackCopyTextToClipboard(email);
+        });
+    } else {
+        // Fallback için eski yöntem
+        fallbackCopyTextToClipboard(email);
+    }
+}
+
+// Fallback kopyalama fonksiyonu
+function fallbackCopyTextToClipboard(text) {
+    const textArea = document.createElement("textarea");
+    textArea.value = text;
+    
+    // Ekran dışında konumlandır
+    textArea.style.top = "0";
+    textArea.style.left = "0";
+    textArea.style.position = "fixed";
+    
+    document.body.appendChild(textArea);
+    textArea.focus();
+    textArea.select();
+    
+    try {
+        const successful = document.execCommand('copy');
+        if (successful) {
+            showCopyNotification('E-posta adresi kopyalandı!');
+        } else {
+            showCopyNotification('Kopyalama başarısız!', 'error');
+        }
+    } catch (err) {
+        showCopyNotification('Kopyalama başarısız!', 'error');
+    }
+    
+    document.body.removeChild(textArea);
+}
+
+// Kopyalama bildirimi gösterme
+function showCopyNotification(message, type = 'success') {
+    // Mevcut bildirimi kaldır
+    const existingNotification = document.querySelector('.copy-notification');
+    if (existingNotification) {
+        existingNotification.remove();
+    }
+    
+    // Yeni bildirim oluştur
+    const notification = document.createElement('div');
+    notification.className = `copy-notification fixed top-4 right-4 z-50 px-4 py-2 rounded-lg text-white font-medium transition-all duration-300 ${
+        type === 'success' ? 'bg-green-500' : 'bg-red-500'
+    }`;
+    notification.textContent = message;
+    
+    document.body.appendChild(notification);
+    
+    // 3 saniye sonra kaldır
+    setTimeout(() => {
+        notification.style.opacity = '0';
+        notification.style.transform = 'translateX(100%)';
+        setTimeout(() => {
+            if (notification.parentNode) {
+                notification.parentNode.removeChild(notification);
+            }
+        }, 300);
+    }, 3000);
+}
